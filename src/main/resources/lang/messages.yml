@@ -15,7 +15,7 @@ egg-info:
     - ''
     - '&7Group| &f{group}&7.'
     - '&7World| &f{world}&7.'
-    - '&7Coordinates| &f{x}&7, &f{y}&7, &f{z}&7.'
+    - '&7Coordinates| &fX: {x}&7, &fY: {y}&7, &fZ: {z}&7.'
     - '&7Total found| &f{total-found}&7.'
     - '&7Placer| &f{placer}&7.'
 
@@ -25,7 +25,7 @@ egg-tp:
     - '&7You have teleported to egg &f{id}&7.'
     - ''
     - '&7World| &f{world}&7.'
-    - '&7Coordinates| &f{x}&7, &f{y}&7, &f{z}&7.'
+    - '&7Coordinates| &fX: {x}&7, &fY: {y}&7, &fZ: {z}&7.'
 
 egg-list:
   action-bar: false

@@ -41,13 +41,13 @@ public class FeCmd implements TabExecutor {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
         List<String> completion = new ArrayList<>();
         switch (args.length) {
-            case 0:
+            case 1:
                 completion.add("info");
                 completion.add("give");
                 completion.add("list");
                 completion.add("tp");
                 break;
-            case 1:
+            case 2:
                 switch (args[0]) {
                     case "give":
                     case "g":
@@ -69,7 +69,8 @@ public class FeCmd implements TabExecutor {
                         }
                         break;
                 }
-            case 2:
+                break;
+            case 3:
                 switch (args[0]) {
                     case "give":
                     case "g":
@@ -78,12 +79,15 @@ public class FeCmd implements TabExecutor {
                         }
                         break;
                 }
-            case 3:
+                break;
+            case 4:
                 switch (args[0]) {
                     case "give":
                     case "g":
                         completion.add("1");
+                        break;
                 }
+                break;
         }
         return completion;
     }
