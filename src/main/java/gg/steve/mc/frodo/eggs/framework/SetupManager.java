@@ -3,9 +3,12 @@ package gg.steve.mc.frodo.eggs.framework;
 import gg.steve.mc.frodo.eggs.cmd.FeCmd;
 import gg.steve.mc.frodo.eggs.core.EggGroupManager;
 import gg.steve.mc.frodo.eggs.core.EggManager;
+import gg.steve.mc.frodo.eggs.framework.utils.LogUtil;
 import gg.steve.mc.frodo.eggs.framework.yml.Files;
 import gg.steve.mc.frodo.eggs.framework.yml.utils.FileManagerUtil;
 import gg.steve.mc.frodo.eggs.listener.EggListener;
+import gg.steve.mc.frodo.eggs.papi.EggsExpansion;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -61,6 +64,13 @@ public class SetupManager {
         // gui
         EggManager.onShutdown();
         EggGroupManager.onShutdown();
+    }
+
+    public static void registerPlaceholderExpansions() {
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            LogUtil.info("PlaceholderAPI found, registering expansions with it now...");
+            new EggsExpansion().register();
+        }
     }
 
     public static FileManagerUtil getFileManagerUtil() {

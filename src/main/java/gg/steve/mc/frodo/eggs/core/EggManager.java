@@ -4,7 +4,6 @@ import gg.steve.mc.frodo.eggs.FrodoEggs;
 import gg.steve.mc.frodo.eggs.framework.yml.Files;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -88,9 +87,11 @@ public class EggManager {
         return eggs.add(egg);
     }
 
-    public static void removeEgg(UUID id) {
+    public static void removeEgg(Egg egg) {
         if (eggs == null || eggs.isEmpty()) return;
-        eggs.removeIf(egg -> egg.getId().equals(id));
+        if (!eggs.contains(egg)) return;
+        egg.getGroup().removeEgg(egg);
+        eggs.remove(egg);
     }
 
     public static void setupParticles() {
@@ -104,7 +105,7 @@ public class EggManager {
                         return;
                     double dist = loc.distance(player.getLocation());
                     if (dist >= 25d) return;
-                    player.spawnParticle(Particle.VILLAGER_HAPPY, loc, 7, 0.325, 0.325, 0.325);
+                    player.spawnParticle(egg.getGroup().getParticle(), loc, 7, 0.325, 0.325, 0.325);
                 }
             }
         }, 0L, 10L);

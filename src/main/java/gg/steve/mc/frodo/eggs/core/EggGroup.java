@@ -4,6 +4,7 @@ import gg.steve.mc.frodo.eggs.framework.nbt.NBTItem;
 import gg.steve.mc.frodo.eggs.framework.utils.ColorUtil;
 import gg.steve.mc.frodo.eggs.framework.utils.ItemBuilderUtil;
 import gg.steve.mc.frodo.eggs.framework.yml.Files;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,14 +19,19 @@ public class EggGroup {
     private String name;
     private List<Egg> eggs;
     private List<Integer> skins;
-    private List<String> commands, message;
+    private List<String> commands, finalCommands, message;
+    private Particle particle;
+    private int particleCount;
 
     public EggGroup(String name) {
         this.name = name;
         this.eggs = new ArrayList<>();
         this.skins = Files.CONFIG.get().getIntegerList("groups." + this.name + ".skins");
         this.commands = Files.CONFIG.get().getStringList("groups." + this.name + ".commands");
+        this.finalCommands = Files.CONFIG.get().getStringList("groups." + this.name + ".all-found-commands");
         this.message = Files.CONFIG.get().getStringList("groups." + this.name + ".message");
+        this.particle = Particle.valueOf(Files.CONFIG.get().getString("groups." + this.name + ".particle.type").toUpperCase());
+        this.particleCount = Files.CONFIG.get().getInt("groups." + this.name + ".particle.count");
     }
 
     public EggGroup(String name, List<Egg> eggs) {
@@ -33,7 +39,10 @@ public class EggGroup {
         this.name = name;
         this.skins = Files.CONFIG.get().getIntegerList("groups." + this.name + ".skins");
         this.commands = Files.CONFIG.get().getStringList("groups." + this.name + ".commands");
+        this.finalCommands = Files.CONFIG.get().getStringList("groups." + this.name + ".all-found-commands");
         this.message = Files.CONFIG.get().getStringList("groups." + this.name + ".message");
+        this.particle = Particle.valueOf(Files.CONFIG.get().getString("groups." + this.name + ".particle.type").toUpperCase());
+        this.particleCount = Files.CONFIG.get().getInt("groups." + this.name + ".particle.count");
     }
 
     public boolean addEgg(Egg egg) {
@@ -62,8 +71,16 @@ public class EggGroup {
         return commands;
     }
 
+    public List<String> getFinalCommands() {
+        return finalCommands;
+    }
+
     public List<String> getMessage() {
         return message;
+    }
+
+    public Particle getParticle() {
+        return particle;
     }
 
     public void messagePlayer(Player player) {
@@ -95,6 +112,22 @@ public class EggGroup {
 
     public int getRandomSkin() {
         if (this.skins == null || this.skins.isEmpty()) return 0;
-        return new Random().nextInt(this.skins.size());
+        int index = new Random().nextInt(this.skins.size());
+        return this.skins.get(index);
+    }
+
+    public boolean isFinalEgg(Player player) {
+        for (Egg egg : this.eggs) {
+            if (!egg.isFound(player)) return false;
+        }
+        return true;
+    }
+
+    public int getEggsFound(Player player) {
+        int found = 0;
+        for (Egg egg : this.eggs) {
+            if (egg.isFound(player)) found++;
+        }
+        return found;
     }
 }

@@ -6,6 +6,7 @@ import gg.steve.mc.frodo.eggs.core.EggGroupManager;
 import gg.steve.mc.frodo.eggs.core.EggManager;
 import gg.steve.mc.frodo.eggs.framework.nbt.NBTItem;
 import gg.steve.mc.frodo.eggs.framework.utils.CommandUtil;
+import gg.steve.mc.frodo.eggs.framework.utils.FireworkUtil;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -39,7 +40,7 @@ public class EggListener implements Listener {
         if ((egg = EggManager.getEggByLocation(event.getBlock().getLocation())) == null) return;
         event.setCancelled(true);
         event.getBlock().setType(Material.AIR);
-        EggManager.removeEgg(egg.getId());
+        EggManager.removeEgg(egg);
     }
 
     @EventHandler
@@ -50,7 +51,7 @@ public class EggListener implements Listener {
         event.setCancelled(true);
         event.getBlock().setType(Material.AIR);
         egg.setFound(event.getPlayer());
-        EggManager.removeEgg(egg.getId());
+        EggManager.removeEgg(egg);
     }
 
     @EventHandler
@@ -62,6 +63,10 @@ public class EggListener implements Listener {
         if (egg.isFound(event.getPlayer())) return;
         egg.setFound(event.getPlayer());
         CommandUtil.execute(egg.getGroup().getCommands(), event.getPlayer());
+        if (egg.getGroup().isFinalEgg(event.getPlayer())) {
+            CommandUtil.execute(egg.getGroup().getFinalCommands(), event.getPlayer());
+        }
+        FireworkUtil.spawn(egg.getLocation());
         egg.getGroup().messagePlayer(event.getPlayer());
     }
 }

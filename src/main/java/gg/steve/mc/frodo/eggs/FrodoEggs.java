@@ -15,6 +15,7 @@ public final class FrodoEggs extends JavaPlugin {
         SetupManager.registerCommands(instance);
         SetupManager.registerEvents(instance);
         SetupManager.loadPluginCache();
+        SetupManager.registerPlaceholderExpansions();
     }
 
     @Override

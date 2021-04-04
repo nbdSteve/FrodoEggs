@@ -1,11 +1,22 @@
 groups:
-  easter:
+  Easter:
     skins:
-      - '2321'
+      - '712'
+      - '714'
+      - '715'
+      - '717'
+      - '720'
+      - '4081'
+      - '2656'
     commands:
       - 'give {player} diamond 1'
+    all-found-commands:
+      - 'say {player} has found all of the easter eggs!'
     message:
       - '&6&lCongrats! &7You have claimed an easter egg.'
+    particle:
+      type: 'villager_happy'
+      count: 7
 
 item:
   name: '&6&l{group} Egg'
