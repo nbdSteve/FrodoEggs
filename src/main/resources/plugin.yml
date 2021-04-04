@@ -1,0 +1,13 @@
+name: FrodoEggs
+version: ${project.version}
+main: gg.steve.mc.frodo.eggs.FrodoEggs
+api-version: 1.16
+authors: [ stevegoodhill ]
+description: EasterEggs plugin developed for Frodo on discord.
+commands:
+  fe:
+    usage: /<command>
+    description: Main command for FrodoEggs
+    aliases:
+      - frodoeggs
+      - eggs

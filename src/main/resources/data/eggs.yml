@@ -1,0 +1,10 @@
+#uuid:
+#  group: 'easter'
+#  location:
+#    world: 'world'
+#    x: 0
+#    y: 128
+#    z: 0
+#  found:
+#    - uuid
+#  placer:

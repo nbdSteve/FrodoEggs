@@ -1,0 +1,22 @@
+groups:
+  easter:
+    skins:
+      - '2321'
+    commands:
+      - 'give {player} diamond 1'
+    message:
+      - '&6&lCongrats! &7You have claimed an easter egg.'
+
+item:
+  name: '&6&l{group} Egg'
+  lore:
+    - ''
+    - '&6&l{group} Egg.'
+    - ''
+    - '&7Place this egg to allow players'
+    - '&7to claim the rewards...'
+  enchantments:
+    - 'arrow_fire:10'
+  item-flags:
+    - 'hide_attributes'
+  unbreakable: true

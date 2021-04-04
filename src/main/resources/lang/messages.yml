@@ -1,0 +1,40 @@
+help:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs&7| Sample help message, please change this.'
+
+reload:
+  action-bar: true
+  text:
+    - '&5&lFrodo&dEggs&7| You have successfully reloaded the plugin.'
+
+egg-info:
+  action-bar: false
+  text:
+    - '&7Information about egg &f{id}&7.'
+    - ''
+    - '&7Group| &f{group}&7.'
+    - '&7World| &f{world}&7.'
+    - '&7Coordinates| &f{x}&7, &f{y}&7, &f{z}&7.'
+    - '&7Total found| &f{total-found}&7.'
+    - '&7Placer| &f{placer}&7.'
+
+egg-tp:
+  action-bar: false
+  text:
+    - '&7You have teleported to egg &f{id}&7.'
+    - ''
+    - '&7World| &f{world}&7.'
+    - '&7Coordinates| &f{x}&7, &f{y}&7, &f{z}&7.'
+
+egg-list:
+  action-bar: false
+  text:
+    - '&7Eggs for group &f{group}&7.'
+    - ''
+    - '&7{eggs}'
+
+egg-receive:
+  action-bar: true
+  text:
+    - '&5&lFrodo&dEggs&7| You have received an &6{group} egg&7, place it to change the skin.'

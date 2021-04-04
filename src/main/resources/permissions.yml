@@ -1,0 +1,7 @@
+command:
+  help: fe.help
+  reload: fe.reload
+  give: fe.give
+  list: fe.list
+  tp: fe.tp
+  info: fe.info

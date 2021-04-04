@@ -1,0 +1,34 @@
+insufficient-permission:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| You do not have the permission required (&b{node}&7) to do that.'
+
+incorrect-args:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The number of arguments you entered is invalid, try &e/t+ help &7for command help.'
+
+invalid-command:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The command you entered does not exist, try &e/t+ help &7for command help.'
+
+invalid-egg:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The id of the egg you entered does not exist.'
+
+invalid-group:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The group you entered does not exist.'
+
+invalid-player:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The player you entered is either offline or does not exist.'
+
+invalid-amount:
+  action-bar: false
+  text:
+    - '&5&lFrodo&dEggs &4(&c&lERROR&4)&7| The amount you entered is invalid.'
